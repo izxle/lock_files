@@ -697,16 +697,14 @@ def get_password(opts):
         if not os.path.exists(opts.password_file):
             err("password file doesn't exist: {}".format(opts.password_file))
         password = None
-        ifp = open(opts.password_file, 'rb')
-        for line in ifp.readlines():
-            line.strip()  # leading and trailing white space not allowed
-            if len(line) == 0:
-                continue  # skip blank lines
-            if line[0] == '#':
-                continue  # skip comments
-            password = line
-            break
-        ifp.close()
+        with open(opts.password_file, 'rb') as ifp:
+            for line in ifp.readlines():
+                # leading and trailing white space not allowed
+                line = line.strip()
+                # skip empty and comment lines
+                if line and line[0] != '#':
+                    password = line
+                    break
         if password is None:
             err('password was not found in file ' + opts.password_file)
         return password
