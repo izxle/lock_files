@@ -86,13 +86,12 @@ warning because the file1.txt output file already exists.
 import argparse
 import base64
 import getpass
-import hashlib
 import inspect
+import multiprocessing
 import os
 import subprocess
 import sys
 import threading
-
 from threading import Thread, Lock, Semaphore
 
 try:
