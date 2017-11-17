@@ -977,9 +977,10 @@ so the program continues.
     if opts.encrypt is True:
         opts.lock = True
     if opts.lock is True and opts.unlock is True:
-        error('You have specified mutually exclusive options to lock/encrypt and unlock/decrypt.')
+        err('You have specified mutually exclusive options to lock/encrypt and unlock/decrypt.')
     if opts.lock is False and opts.unlock is False:
-        opts.lock = True  # the default
+        # the default
+        opts.lock = True
     if opts.inplace:
         opts.suffix = ''
         opts.overwrite = True
