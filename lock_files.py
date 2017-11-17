@@ -135,7 +135,7 @@ class AESCipher:
         Initialize the object.
 
         @param openssl  Operate identically to openssl.
-        @param width    Width of the MIME encoded lines for encryption.
+        @param width    Width of the MIME encoded lines for encryption. (Not implemented)
         @param digest   The digest used.
         @param keylen   The key length (32-256, 16-128, 8-64).
         @param ivlen    Length of the initialization vector.
@@ -163,7 +163,7 @@ class AESCipher:
 
         @param password  The password.
         @param plaintext The plaintext to encrypt.
-        @param msgdgst   The message digest algorithm.
+        @param msgdgst   The message digest algorithm. (Not implemented)
         '''
         # Setup key and IV for both modes.
         if self.m_openssl:
@@ -302,6 +302,7 @@ class AESCipher:
         later.
 
         @param text  The text to pad.
+        @param size  The size of the block.
         '''
         num_bytes = size - (len(text) % size)
 
